@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="penel-heading">
+        <p>
+          <strong>Title:</strong>
+          <%= @post.title %>
+        </p>
+
+        <p>
+          <strong>Author:</strong>
+          <%= @post.user.username %>
+        </p>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Blog entry:</strong>
+          <%= @post.blog_entry %>
+        </p>
+      </div>
+      <div class="panel-footer">
+        <p>
+            <%= link_to 'Edit', edit_post_path(@post) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="comments">
+
+    <%= render 'comments/form', comment: @comment %>
+
+
+
+    <% @post.comments.each do |comment| %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">
+          <p>
+  	    <%= image_tag @post.user.avatar.url, size: 20 %> <%= comment.user.username %> said...<br />
+  	    <%= comment.comment_entry %>
+  	     </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+</div>
+
+<p>
+    <%= link_to 'Back', posts_path %>
+</p>
