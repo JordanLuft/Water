@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'gravatarify', '~> 3.0.0'
 gem 'carrierwave', '~>1.0'
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

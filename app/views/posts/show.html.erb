@@ -17,7 +17,7 @@
       <div class="panel-body">
         <p>
           <strong>Blog entry:</strong>
-          <%= @post.blog_entry %>
+          <%= @post.blog_entry.html_safe %>
         </p>
       </div>
       <div class="panel-footer">
@@ -42,7 +42,10 @@
       <div class="col-md-12">
         <div class="well">
           <p>
-  	    <%= image_tag @post.user.avatar.url, size: 20 %> <%= comment.user.username %> said...<br />
+            <%= link_to comment.user.username,
+              user_posts_path(name: comment.user.username) %>
+        <%= comment.created_at %>
+        <%= image_tag @post.user.avatar.url, size: 20 %> <%= comment.user.username %> said...<br />
   	    <%= comment.comment_entry %>
   	     </p>
         </div>

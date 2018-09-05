@@ -2205,3 +2205,785 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 49ms (Views: 45.3ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-09-05 08:50:39 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-09-05 08:50:39 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 300ms (Views: 290.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-09-05 08:51:28 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 49ms (Views: 48.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-09-05 08:52:03 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GdfSZ24eujBI5y+qwsh3951TO7nGDKxOPNjGmdNQY4eoFv7B3Gk10Fc/9NOfA+5F4+MIfj2Pu6EneOMQVf7Stw==", "user"=>{"email"=>"test@test.com", "username"=>"test", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fc10f576cc8 @tempfile=#<Tempfile:/var/folders/hf/y5qrsdw56nz2jl90wx33ll5c0000gn/T/RackMultipart20180905-61706-162v6u0.jpeg>, @original_filename="superjordan.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"superjordan.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username", "avatar") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$11$a/5d3vZOsa.fNmC.lwAjO.ZgtMYe2OffLQ4yMShTSE1siezUrmwuO"], ["created_at", "2018-09-05 13:52:03.518180"], ["updated_at", "2018-09-05 13:52:03.518180"], ["username", "test"], ["avatar", "superjordan.jpeg"]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 129ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-05 08:52:03 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  Rendered posts/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 59ms (Views: 51.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2018-09-05 08:52:11 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (1.7ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:40
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:45
+  Rendered posts/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 69ms (Views: 50.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-09-05 08:56:30 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (2.9ms)
+  Rendered posts/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 280ms (Views: 256.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-09-05 08:57:24 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CfmUQCPG5I0UnUzAH3QBm0qc44p61ov9i2CnnPz0n0JgUXOU8BVXpIGVrmH8jWaxm5zPAjYQfDIhkf57LDbjsw==", "post"=>{"title"=>"Joes mom ", "user_id"=>"2", "blog_entry"=>"Salvia iceland pop-up cronut meggings plaid seitan. Art party street art skateboard selvage pok pok. Put a bird on it gochujang tilde craft beer blog chambray, tofu readymade photo booth actually crucifix pug pinterest vice church-key. Church-key lyft cray artisan master cleanse kitsch leggings wolf photo booth vice. Keytar +1 kickstarter subway tile aesthetic raclette banjo af heirloom.\r\n\r\nDisrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "blog_entry", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Joes mom "], ["blog_entry", "Salvia iceland pop-up cronut meggings plaid seitan. Art party street art skateboard selvage pok pok. Put a bird on it gochujang tilde craft beer blog chambray, tofu readymade photo booth actually crucifix pug pinterest vice church-key. Church-key lyft cray artisan master cleanse kitsch leggings wolf photo booth vice. Keytar +1 kickstarter subway tile aesthetic raclette banjo af heirloom.\r\n\r\nDisrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud"], ["created_at", "2018-09-05 13:57:24.880284"], ["updated_at", "2018-09-05 13:57:24.880284"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 12ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2018-09-05 08:57:24 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (1.0ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/posts/show.html.erb:40
+  Rendered posts/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 55ms (Views: 44.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 08:57:56 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  Rendered posts/index.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 100ms (Views: 84.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-09-05 08:58:00 -0500
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.5ms)
+  Rendered posts/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 58ms (Views: 53.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-09-05 08:58:15 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PBT2wZlvtL+w4lSkMUZlTaei0VNSktbveqw8iEfEkMEnD45oAc5KJnNfgdm/C5E5F6zeDLyin3Cf2lMy/4gycQ==", "post"=>{"title"=>"Water is good ", "user_id"=>"2", "blog_entry"=>"Cloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag.\r\n\r\nFingerstache edison bulb freegan, plaid cornhole ramps gentrify beard synth letterpress iPhone chambray cloud bread green juice chartreuse. Meh fingerstache vegan trust fund franzen. Schlitz direct trade church-key polaroid, ugh narwhal cloud bread kinfolk prism meh squid leggings kitsch. Live-edge tumeric lumbersexual, YOLO vape asymmetrical fam direct trade. Mumblecore vinyl migas PBR&B farm-to-table."}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "blog_entry", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Water is good "], ["blog_entry", "Cloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag.\r\n\r\nFingerstache edison bulb freegan, plaid cornhole ramps gentrify beard synth letterpress iPhone chambray cloud bread green juice chartreuse. Meh fingerstache vegan trust fund franzen. Schlitz direct trade church-key polaroid, ugh narwhal cloud bread kinfolk prism meh squid leggings kitsch. Live-edge tumeric lumbersexual, YOLO vape asymmetrical fam direct trade. Mumblecore vinyl migas PBR&B farm-to-table."], ["created_at", "2018-09-05 13:58:15.557871"], ["updated_at", "2018-09-05 13:58:15.557871"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 9ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2018-09-05 08:58:15 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (1.1ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:40
+  Rendered posts/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 63ms (Views: 50.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 08:58:17 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  Rendered posts/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 64ms (Views: 58.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-09-05 08:58:19 -0500
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.3ms)
+  Rendered posts/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 56ms (Views: 50.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-09-05 08:58:40 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QLCPSHzlWhe/FjzLcCO1b1nZ4c48aZhURdprcFio99Fbq/fh5ESkjnyr6bb+bkEb6dfukdJZ0cugrATK4ORVYQ==", "post"=>{"title"=>"Social media is bad ", "user_id"=>"2", "blog_entry"=>"Disrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud bread kale chips irony shoreditch plaid ethical. XOXO pinterest artisan pug whatever hella before they sold out jean shorts viral godard cardigan seitan.\r\n\r\nCloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag."}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "blog_entry", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Social media is bad "], ["blog_entry", "Disrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud bread kale chips irony shoreditch plaid ethical. XOXO pinterest artisan pug whatever hella before they sold out jean shorts viral godard cardigan seitan.\r\n\r\nCloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag."], ["created_at", "2018-09-05 13:58:40.602095"], ["updated_at", "2018-09-05 13:58:40.602095"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-09-05 08:58:40 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (1.0ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:40
+  Rendered posts/show.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 60ms (Views: 54.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 08:58:43 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  Rendered posts/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 57ms (Views: 50.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-09-05 08:58:47 -0500
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.3ms)
+  Rendered posts/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 64ms (Views: 56.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-09-05 08:58:54 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kbt1C1zKPSSa/+5xp+T4TOYLRIAFnRiY1gB4N0wAXDmKoA2ixGvDvVlCOwwpqQw4VgVL3+utUQczdheN9Ez+iQ==", "post"=>{"title"=>"lol", "user_id"=>"2", "blog_entry"=>"Disrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud bread kale chips irony shoreditch plaid ethical. XOXO pinterest artisan pug whatever hella before they sold out jean shorts viral godard cardigan seitan.\r\n\r\nCloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag."}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("title", "blog_entry", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "lol"], ["blog_entry", "Disrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud bread kale chips irony shoreditch plaid ethical. XOXO pinterest artisan pug whatever hella before they sold out jean shorts viral godard cardigan seitan.\r\n\r\nCloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag."], ["created_at", "2018-09-05 13:58:54.019366"], ["updated_at", "2018-09-05 13:58:54.019366"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 7ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2018-09-05 08:58:54 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (1.4ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:40
+  Rendered posts/show.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 65ms (Views: 57.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 08:58:56 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  Rendered posts/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 57ms (Views: 49.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-09-05 08:59:42 -0500
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.3ms)
+  Rendered posts/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 54ms (Views: 48.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-09-05 08:59:48 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yhguNTcj7ASxfPGL6LyQuFhvNZMLlQFsJhwKMcSKd57RA1acr4ISnXLBJPZm8WTM6GE6zOWlSPPDamWLfMbVLg==", "post"=>{"title"=>"hahahaha", "user_id"=>"2", "blog_entry"=>"Disrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud bread kale chips irony shoreditch plaid ethical. XOXO pinterest artisan pug whatever hella before they sold out jean shorts viral godard cardigan seitan.\r\n\r\nCloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag."}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "blog_entry", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "hahahaha"], ["blog_entry", "Disrupt lo-fi tote bag drinking vinegar, 3 wolf moon cold-pressed venmo ethical knausgaard. Put a bird on it chartreuse seitan deep v typewriter. Ramps bicycle rights kitsch direct trade, squid meditation disrupt readymade. Skateboard disrupt coloring book tattooed mumblecore. Retro enamel pin williamsburg, actually kombucha kickstarter single-origin coffee authentic cloud bread kale chips irony shoreditch plaid ethical. XOXO pinterest artisan pug whatever hella before they sold out jean shorts viral godard cardigan seitan.\r\n\r\nCloud bread leggings semiotics godard bespoke organic twee. Gluten-free tacos farm-to-table heirloom health goth pabst vaporware vegan man braid 3 wolf moon 90's biodiesel single-origin coffee shoreditch. Kitsch austin offal blue bottle tote bag, photo booth af. Chillwave unicorn street art copper mug wayfarers craft beer blog food truck semiotics ennui hexagon pinterest hammock humblebrag."], ["created_at", "2018-09-05 13:59:48.302786"], ["updated_at", "2018-09-05 13:59:48.302786"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:31
+Redirected to http://localhost:3000/posts/6
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/posts/6" for 127.0.0.1 at 2018-09-05 08:59:48 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (6.1ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 6]]
+  ↳ app/views/posts/show.html.erb:40
+  Rendered posts/show.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 65ms (Views: 58.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-09-05 08:59:50 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wtJNx+3kkmKTVtsm2Ez0/Hio56/iGNjBI9zf6QIEF8ereqoTPjchSwZeOYc7tZPWqajLJ67eLw6JLYYO0sZrNg==", "comment"=>{"user_id"=>"2", "comment_entry"=>"", "post_id"=>"6"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:30
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("comment_entry", "created_at", "updated_at", "post_id", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment_entry", ""], ["created_at", "2018-09-05 13:59:50.826752"], ["updated_at", "2018-09-05 13:59:50.826752"], ["post_id", 6], ["user_id", 2]]
+  ↳ app/controllers/comments_controller.rb:30
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:30
+Redirected to http://localhost:3000/posts/6
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/6" for 127.0.0.1 at 2018-09-05 08:59:50 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (1.4ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 6]]
+  ↳ app/views/posts/show.html.erb:40
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:45
+  Rendered posts/show.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 64ms (Views: 58.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 08:59:52 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  Rendered posts/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 58ms (Views: 50.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 08:59:55 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 51ms (Views: 47.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:01:09 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  Rendered posts/index.html.erb within layouts/application (45.7ms)
+Completed 200 OK in 93ms (Views: 88.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:02:33 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  Rendered posts/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 72ms (Views: 68.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts?page=2" for 127.0.0.1 at 2018-09-05 09:02:36 -0500
+Processing by PostsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 3]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  Rendered posts/index.html.erb within layouts/application (28.2ms)
+Completed 200 OK in 82ms (Views: 77.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:02:43 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  Rendered posts/index.html.erb within layouts/application (33.5ms)
+Completed 200 OK in 90ms (Views: 84.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:03:19 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:30
+  Rendered posts/index.html.erb within layouts/application (28.9ms)
+Completed 200 OK in 72ms (Views: 67.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:04:05 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 80ms (Views: 76.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:04:32 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (28.6ms)
+Completed 200 OK in 84ms (Views: 79.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:12:25 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (50.5ms)
+Completed 200 OK in 115ms (Views: 100.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:18:02 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:19: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+posts_path(id: post.user_id) );@output_buffer.safe_append='<
+                              ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+'.freeze;     end 
+                 ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:40: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:42: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/posts/index.html.erb:19: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+app/views/posts/index.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+app/views/posts/index.html.erb:40: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:19:00 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.2ms)
+
+
+  
+SyntaxError (/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:19: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+posts_path(id: post.user_id) );@output_buffer.safe_append='<
+                              ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+'.freeze;     end 
+                 ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:40: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:42: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/posts/index.html.erb:19: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+app/views/posts/index.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+app/views/posts/index.html.erb:40: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:21:32 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.2ms)
+
+
+  
+SyntaxError (/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:19: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+posts_path(id: post.user_id) );@output_buffer.safe_append='<
+                              ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+'.freeze;     end 
+                 ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:40: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/Users/jordanluft/Documents/GitHub/Water/app/views/posts/index.html.erb:42: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/posts/index.html.erb:19: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+app/views/posts/index.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+app/views/posts/index.html.erb:40: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:23:17 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (39.4ms)
+Completed 200 OK in 82ms (Views: 77.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:24:22 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 72ms (Views: 67.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/user_posts?id=1" for 127.0.0.1 at 2018-09-05 09:24:25 -0500
+Processing by PostsController#user_posts as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 143ms (ActiveRecord: 0.3ms)
+
+
+  
+NameError (undefined local variable or method `param' for #<PostsController:0x00007fc47aca5710>
+Did you mean?  params
+               params=):
+  
+app/controllers/posts_controller.rb:5:in `user_posts'
+Started GET "/user_posts?id=1" for 127.0.0.1 at 2018-09-05 09:25:57 -0500
+Processing by PostsController#user_posts as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+  Rendering posts/user_posts.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/posts/user_posts.html.erb:4
+  Rendered posts/user_posts.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 87ms (Views: 67.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2018-09-05 09:26:01 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:72
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered comments/_form.html.erb (2.0ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:40
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:45
+  Rendered posts/show.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 91ms (Views: 73.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-09-05 09:26:09 -0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:19
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 74ms (Views: 69.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/user_posts?id=2" for 127.0.0.1 at 2018-09-05 09:26:11 -0500
+Processing by PostsController#user_posts as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/jordanluft/.rvm/gems/ruby-2.4.4/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+  Rendering posts/user_posts.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/posts/user_posts.html.erb:4
+  Rendered posts/user_posts.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 53ms (Views: 47.1ms | ActiveRecord: 0.4ms)
+
+
